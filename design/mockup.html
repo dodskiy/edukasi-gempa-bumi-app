@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SiGempa Malut — Mockup Splash & Home</title>
+<style>
+  :root{
+    --sky:#6FC6EE; --sky-deep:#3FA8DA; --sky-soft:#BFE9FB; --sky-mist:#E9F9FF;
+    --sunny:#FFC94D; --sunny-deep:#F2A70B; --sunny-soft:#FFF3D0;
+    --coral:#FF8B7A; --coral-deep:#F16249; --coral-dark:#C4400E; --coral-soft:#FFE9E4;
+    --mint:#6FDBA8; --mint-deep:#3DBE85;
+    --grape:#B79CF0; --grape-deep:#7048C4;
+    --cream:#FFFBF1; --card:#FFFFFF; --navy:#31355A; --ink-soft:#8385A3;
+    --line:#F2ECDA; --shadow3d:#E9E2CE;
+  }
+  *{box-sizing:border-box; -webkit-font-smoothing:antialiased;}
+  html,body{margin:0; padding:0;}
+  body{
+    min-width:1180px;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255,201,77,.26), transparent 32%),
+      radial-gradient(circle at 88% 12%, rgba(111,198,238,.36), transparent 36%),
+      linear-gradient(180deg,#F3FBFE 0%, #EAF7FF 44%, #FFFBF1 100%);
+    font-family:"Segoe UI", "Nunito", system-ui, -apple-system, sans-serif;
+    color:var(--navy);
+    padding:34px 24px 54px;
+  }
+  .page{max-width:1188px; margin:0 auto;}
+  header.hero{text-align:center; margin-bottom:26px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:7px 14px; border-radius:999px;
+    background:rgba(255,255,255,.78); border:1.4px solid rgba(63,168,218,.22);
+    box-shadow:0 6px 18px rgba(63,168,218,.12);
+    font-size:11px; letter-spacing:1.7px; font-weight:900; color:var(--navy);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--mint-deep);}
+  .hero h1{
+    margin:13px 0 7px; font-size:35px; line-height:1.1; letter-spacing:-.6px;
+    font-weight:900; color:var(--navy);
+  }
+  .hero h1 em{font-style:normal; color:var(--coral-deep);}
+  .hero p{margin:0 auto; max-width:760px; font-size:13.5px; line-height:1.55; color:#5A6C8A; font-weight:600;}
+  .palette{display:flex; justify-content:center; gap:7px; margin-top:15px; flex-wrap:wrap;}
+  .swatch{display:flex; align-items:center; gap:7px; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.72); border:1px solid rgba(49,53,90,.08); font-size:10px; font-weight:800; color:#5A6C8A;}
+  .swatch i{width:12px;height:12px;border-radius:50%;display:block; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6);}
+
+  .devices{display:flex; justify-content:center; align-items:flex-start; gap:20px; margin-top:28px;}
+  .device-wrap{width:364px;}
+  .device{
+    width:364px; padding:10px; border-radius:50px;
+    background:linear-gradient(145deg,#454A73,#1E2340);
+    box-shadow:0 30px 60px rgba(49,53,90,.28), inset 0 1px 0 rgba(255,255,255,.28);
+    position:relative;
+  }
+  .device:before{
+    content:""; position:absolute; left:50%; top:10px; transform:translateX(-50%);
+    width:108px; height:20px; background:#151A31; border-radius:0 0 14px 14px; z-index:6;
+  }
+  .screen{
+    width:344px; height:724px; border-radius:40px; overflow:hidden; position:relative;
+    background:var(--cream);
+  }
+  .statusbar{
+    position:absolute; z-index:5; left:0; right:0; top:0; height:34px;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:0 20px; font-size:10.5px; font-weight:800; letter-spacing:.2px;
+  }
+  .statusbar.dark{color:var(--navy);}
+  .statusbar.light{color:#fff;}
+  .statusbar .icons{display:flex; align-items:center; gap:5px; font-size:9px;}
+  .caption{text-align:center; margin-top:14px;}
+  .caption b{display:block; font-size:13.5px; font-weight:900; color:var(--navy);}
+  .caption span{display:block; margin-top:3px; font-size:10.5px; font-weight:700; color:var(--ink-soft);}
+
+  /* ================= SPLASH ================= */
+  .splash-screen{
+    background:linear-gradient(180deg,#E9F9FF 0%, #C7EEFF 44%, #9ADCF7 78%, var(--cream) 78%);
+  }
+  .splash-sun{
+    position:absolute; width:64px; height:64px; right:26px; top:64px; border-radius:50%;
+    background:var(--sunny); border:2px solid rgba(242,167,11,.65);
+    box-shadow:0 0 0 14px rgba(255,201,77,.18), 0 0 0 28px rgba(255,201,77,.10);
+  }
+  .cloud{position:absolute; background:#fff; border-radius:999px; opacity:.9; filter:blur(.2px);}
+  .cloud:before,.cloud:after{content:""; position:absolute; background:#fff; border-radius:50%;}
+  .cloud.a{width:86px; height:24px; left:28px; top:94px;}
+  .cloud.a:before{width:38px;height:38px;left:12px;top:-17px;}
+  .cloud.a:after{width:28px;height:28px;right:10px;top:-12px;}
+  .cloud.b{width:58px; height:17px; right:42px; top:160px; opacity:.58;}
+  .cloud.b:before{width:26px;height:26px;left:9px;top:-12px;}
+  .cloud.b:after{width:20px;height:20px;right:7px;top:-9px;}
+  .cloud.c{width:44px; height:13px; left:44px; top:236px; opacity:.4;}
+  .cloud.c:before{width:20px;height:20px;left:7px;top:-9px;}
+  .cloud.c:after{width:16px;height:16px;right:6px;top:-7px;}
+  .splash-land{position:absolute; left:0; right:0; bottom:0; height:190px; pointer-events:none;}
+  .splash-content{position:relative; z-index:2; height:100%; padding:44px 22px 16px; display:flex; flex-direction:column;}
+  .brand{
+    align-self:center; display:flex; align-items:center; gap:7px;
+    background:rgba(255,255,255,.82); border:1.4px solid rgba(63,168,218,.22);
+    padding:4px 11px 4px 5px; border-radius:999px;
+    box-shadow:0 5px 14px rgba(63,168,218,.14);
+  }
+  .brand .mini{width:24px;height:24px;border-radius:50%;background:#fff;display:grid;place-items:center;}
+  .brand .mini svg{width:21px;height:21px;}
+  .brand b{font-size:8.5px; letter-spacing:1.5px; font-weight:900;}
+  .brand .dot{width:5px;height:5px;}
+  .splash-title{text-align:center; margin-top:11px;}
+  .splash-title h2{margin:0; font-size:22px; line-height:1.1; letter-spacing:.7px; font-weight:900; color:var(--navy);}
+  .splash-title h3{
+    margin:1px 0 0; font-size:35px; line-height:1.04; letter-spacing:1px; font-weight:900;
+    background:linear-gradient(135deg,var(--coral-deep),#FF7A59);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .game-chip{
+    display:inline-block; margin-top:8px; padding:4px 11px; border-radius:999px;
+    background:rgba(255,255,255,.82); border:1.4px solid #fff;
+    box-shadow:0 4px 10px rgba(63,168,218,.12);
+    font-size:8.6px; font-weight:900; letter-spacing:1px;
+  }
+  .splash-sub{margin-top:5px; font-size:10.3px; font-weight:700; color:#5A6C8A;}
+  .scene-card{
+    position:relative; flex:1; min-height:0; margin-top:12px; border-radius:26px;
+    border:2px dashed rgba(63,168,218,.45); overflow:hidden; background:#9ADCF7;
+    box-shadow:0 16px 32px rgba(63,168,218,.22);
+  }
+  .scene{position:absolute; inset:0; width:100%; height:100%;}
+  .scene-card .bubble{
+    position:absolute; left:11px; top:11px; max-width:200px;
+    background:rgba(255,255,255,.96); border:1.5px solid #fff; border-radius:16px 16px 16px 4px;
+    padding:7px 10px; font-size:9.3px; font-weight:800; line-height:1.35; color:var(--navy);
+    box-shadow:0 5px 12px rgba(49,53,90,.14);
+  }
+  .mascot{
+    position:absolute; left:12px; bottom:11px; width:66px; height:66px; border-radius:50%;
+    background:#fff; border:3.2px solid var(--sunny); padding:5px;
+    box-shadow:0 6px 14px rgba(49,53,90,.20);
+  }
+  .mascot svg{width:100%;height:100%;}
+  .safe-chip{
+    position:absolute; right:10px; bottom:12px;
+    display:flex; align-items:center; gap:4px;
+    background:rgba(255,255,255,.94); border:1.2px solid #fff; border-radius:999px;
+    padding:4px 8px; font-size:6.6px; font-weight:900; letter-spacing:.25px; color:var(--navy);
+    box-shadow:0 4px 10px rgba(49,53,90,.14);
+  }
+  .safe-chip i{width:9px;height:9px;background:var(--mint-deep); border-radius:2.5px; display:block; position:relative;}
+  .safe-chip i:before{content:"+";position:absolute;inset:0;color:#fff;font-size:8px;font-weight:900;line-height:9px;text-align:center;font-style:normal;}
+  .stat-row{display:flex; gap:7px; margin-top:11px;}
+  .stat{
+    flex:1; display:flex; align-items:center; justify-content:center; gap:4px;
+    padding:6px 4px; border-radius:13px; background:rgba(255,255,255,.92);
+    border:1.4px solid var(--line); box-shadow:0 3px 0 var(--shadow3d);
+    font-size:7.6px; font-weight:900; color:var(--navy); white-space:nowrap;
+  }
+  .stat span{font-size:10px;}
+  .start-btn{
+    margin-top:11px; height:52px; border-radius:16px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    background:linear-gradient(135deg,var(--coral-deep),#FF7A59);
+    border:1.5px solid rgba(255,255,255,.38);
+    box-shadow:0 5px 0 var(--coral-dark), 0 12px 22px rgba(241,98,73,.28);
+    color:#fff; font-size:15.5px; font-weight:900; letter-spacing:.7px;
+  }
+  .start-btn .play{width:27px;height:27px;border-radius:50%;background:rgba(255,255,255,.22);border:1.2px solid rgba(255,255,255,.48);display:grid;place-items:center;font-size:12px;}
+  .start-btn:after{
+    content:""; position:absolute; top:-40px; bottom:-40px; width:28px; left:35%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.30),transparent);
+    transform:rotate(20deg);
+  }
+  .hint{margin-top:7px; text-align:center; font-size:7.8px; font-style:italic; font-weight:700; color:var(--ink-soft);}
+
+  /* ================= HOME ================= */
+  .home-screen{background:var(--cream);}
+  .home-scroll{height:100%; overflow:hidden; padding-bottom:78px;}
+  .home-header{
+    position:relative; overflow:hidden; padding:43px 16px 24px;
+    background:linear-gradient(135deg,var(--sky),var(--sky-deep));
+    border-radius:0 0 34px 34px;
+    box-shadow:0 10px 22px rgba(49,53,90,.20);
+  }
+  .home-header .hsun{position:absolute; right:30px; top:35px; width:32px;height:32px;border-radius:50%;background:rgba(255,201,77,.62);box-shadow:0 0 0 13px rgba(255,201,77,.16),0 0 0 25px rgba(255,255,255,.07);}
+  .home-header .hwave{position:absolute; left:0; right:0; bottom:-1px; height:46px; opacity:.9;}
+  .hcloud{position:absolute; background:rgba(255,255,255,.16); border-radius:999px;}
+  .hcloud.a{width:70px;height:20px;left:14px;top:58px;}
+  .hcloud.a:before,.hcloud.a:after{content:"";position:absolute;background:rgba(255,255,255,.16);border-radius:50%;}
+  .hcloud.a:before{width:30px;height:30px;left:9px;top:-13px;}
+  .hcloud.a:after{width:22px;height:22px;right:9px;top:-9px;}
+  .hcloud.b{width:46px;height:13px;right:58px;top:104px;}
+  .hcloud.b:before,.hcloud.b:after{content:"";position:absolute;background:rgba(255,255,255,.16);border-radius:50%;}
+  .hcloud.b:before{width:20px;height:20px;left:6px;top:-8px;}
+  .hcloud.b:after{width:15px;height:15px;right:5px;top:-6px;}
+  .profile{position:relative; z-index:2; display:flex; align-items:center; gap:10px;}
+  .avatar{width:54px;height:54px;border-radius:50%;background:#fff;border:3px solid var(--sunny);padding:5px;position:relative;flex:none;box-shadow:0 5px 10px rgba(0,0,0,.12);}
+  .avatar svg{width:100%;height:100%;}
+  .avatar .star{position:absolute; right:-3px; bottom:-3px; width:19px;height:19px;border-radius:50%;background:var(--sunny);border:2px solid #fff;display:grid;place-items:center;font-size:8px;}
+  .greet{flex:1; min-width:0;}
+  .greet small{display:block; font-size:10.5px; font-weight:700; color:#fff; line-height:1.2;}
+  .greet b{display:block; font-size:12.6px; font-weight:900; color:#fff; line-height:1.2;}
+  .greet em{display:block; margin-top:3px; font-style:normal; font-size:8.6px; font-weight:700; color:#EAF7FF;}
+  .lvl{
+    flex:none; padding:6px 8px; border-radius:12px; background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.30); text-align:center;
+  }
+  .lvl span{display:block; font-size:5.8px; font-weight:900; letter-spacing:.7px; color:#EAF7FF;}
+  .lvl b{display:block; font-size:14px; line-height:1.05; color:#fff; font-weight:900;}
+  .xp{
+    position:relative; z-index:2; margin-top:11px; padding:7px 9px 8px; border-radius:14px;
+    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.22);
+  }
+  .xp-top{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .rank{
+    display:flex; align-items:center; gap:3px; padding:2px 7px; border-radius:8px;
+    background:linear-gradient(135deg,#FFD98A,var(--sunny-deep));
+    font-size:7.5px; font-weight:900; color:var(--navy); white-space:nowrap;
+  }
+  .xp-top small{font-size:7.8px; font-weight:800; color:#fff;}
+  .bar{height:8px; margin-top:5px; border-radius:999px; background:rgba(255,255,255,.24); overflow:hidden;}
+  .bar i{display:block; height:100%; width:26%; border-radius:999px; background:linear-gradient(90deg,#FFD98A,var(--sunny)); box-shadow:0 0 8px rgba(255,201,77,.55);}
+  .prog-row{position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; margin-top:12px;}
+  .prog-row b{font-size:10.5px; color:#fff; font-weight:800; display:flex; gap:5px; align-items:center;}
+  .prog-pill{padding:3px 8px; border-radius:999px; background:rgba(255,255,255,.22); border:1px solid rgba(255,255,255,.35); font-size:8.6px; font-weight:900; color:#fff;}
+  .segments{position:relative; z-index:2; display:flex; gap:4px; margin-top:7px;}
+  .segments i{flex:1; height:8px; border-radius:99px; background:rgba(255,255,255,.26);}
+  .segments i.on{background:linear-gradient(90deg,var(--sunny),#FFE08A); box-shadow:0 2px 4px rgba(242,167,11,.3);}
+  .home-body{padding:13px 14px 0;}
+  .section{display:flex; align-items:center; justify-content:space-between; margin:0 0 8px;}
+  .section h4{margin:0; font-size:11.5px; font-weight:900;}
+  .section a{font-size:8.6px; font-weight:900; color:var(--sky-deep); text-decoration:none;}
+  .tips{display:flex; gap:7px;}
+  .tip{
+    flex:1; background:#fff; border:2px solid var(--line); border-radius:17px; padding:7px 4px 6px;
+    box-shadow:0 4px 0 var(--shadow3d); text-align:center;
+  }
+  .tip .ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;margin:0 auto 4px;font-size:13px;}
+  .tip small{display:block; font-size:6.7px; font-weight:900; color:var(--ink-soft); letter-spacing:.15px;}
+  .tip b{display:block; margin-top:2px; font-size:8.4px; font-weight:900; color:var(--navy); line-height:1.15;}
+  .quest{
+    position:relative; margin-top:12px; padding:12px; border-radius:23px; overflow:hidden;
+    background:linear-gradient(135deg,#FFF6E0,#FFEFC9); border:2.5px solid #FBE6A6;
+    box-shadow:0 8px 18px rgba(242,167,11,.16);
+  }
+  .quest .sunny-emoji{position:absolute; right:9px; top:8px; font-size:14px; opacity:.9;}
+  .quest h5{margin:0; font-size:11.4px; font-weight:900; color:#7A4A00;}
+  .quest p{margin:2px 0 0; font-size:8.2px; font-weight:700; color:#9A6B0E; line-height:1.35;}
+  .steps{position:relative; display:flex; justify-content:space-between; margin-top:12px; padding-top:1px;}
+  .steps:before{content:""; position:absolute; left:16px; right:16px; top:17px; height:3px; background:#F0D488; border-radius:2px;}
+  .step{position:relative; z-index:1; width:38px; text-align:center;}
+  .step .circle{
+    width:32px;height:32px;border-radius:50%;margin:0 auto;display:grid;place-items:center;
+    background:linear-gradient(135deg,#EFEAD9,#E5DECB); border:2.5px solid #fff;
+    box-shadow:0 3px 5px rgba(0,0,0,.12); font-size:11px;
+  }
+  .step.done .circle{background:linear-gradient(135deg,#8CE6B2,var(--mint-deep));}
+  .step.current .circle{background:linear-gradient(135deg,#FFD98A,var(--sunny-deep)); box-shadow:0 0 0 4px rgba(242,167,11,.20),0 3px 6px rgba(0,0,0,.12);}
+  .step small{display:block; margin-top:4px; font-size:6.4px; font-weight:900; color:#9A6B0E; line-height:1.2;}
+  .cta{
+    margin-top:11px; height:34px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:9.6px; font-weight:900;
+    background:linear-gradient(135deg,#FFCB4A,var(--sunny-deep));
+    box-shadow:0 4px 0 #C6800F;
+  }
+  .fact{
+    margin-top:12px; padding:10px; border-radius:20px; display:flex; gap:8px;
+    background:linear-gradient(135deg,#fff,#EFF9FF); border:2px solid rgba(191,233,251,.85);
+    box-shadow:0 7px 16px rgba(63,168,218,.10);
+  }
+  .fact .brain{width:25px;height:25px;border-radius:9px;background:var(--sunny-soft);border:1.2px solid rgba(255,201,77,.6);display:grid;place-items:center;font-size:13px;flex:none;}
+  .fact .txt{flex:1; min-width:0;}
+  .fact .head{display:flex; align-items:center; justify-content:space-between;}
+  .fact b{font-size:9.6px; font-weight:900;}
+  .fact small{font-size:6.7px; font-weight:900; color:var(--ink-soft);}
+  .fact p{margin:4px 0 0; font-size:7.9px; line-height:1.45; font-weight:600; color:rgba(49,53,90,.86);}
+  .fact .tags{display:flex; gap:4px; margin-top:5px;}
+  .tag{font-size:6.2px; font-weight:900; padding:2px 5px; border-radius:5px;}
+  .tag.green{color:var(--mint-deep); background:rgba(61,190,133,.12);}
+  .tag.blue{color:var(--sky-deep); background:rgba(63,168,218,.12);}
+  .fact .mascot-sm{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--sunny);padding:3px;flex:none;box-shadow:0 3px 8px rgba(49,53,90,.12);}
+  .fact .mascot-sm svg{width:100%;height:100%;}
+
+  /* home lower */
+  .lower{height:100%; padding:44px 14px 78px; overflow:hidden; background:var(--cream); display:flex; flex-direction:column;}
+  .featured{
+    display:flex; align-items:center; gap:9px; padding:10px; border-radius:19px; background:#fff;
+    border:2px solid var(--line); box-shadow:0 4px 0 var(--shadow3d);
+  }
+  .featured .icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:20px;flex:none;}
+  .featured .info{flex:1; min-width:0;}
+  .featured .top{display:flex; align-items:center; gap:5px;}
+  .featured b{font-size:10.6px; font-weight:900;}
+  .featured small{display:block; margin-top:2px; font-size:7.6px; font-weight:600; color:var(--ink-soft); line-height:1.3;}
+  .badge{font-size:6.2px; font-weight:900; padding:2px 5px; border-radius:99px; margin-left:auto; flex:none;}
+  .arrow{color:var(--ink-soft); font-size:11px; flex:none;}
+  .grid2{display:flex; gap:9px; margin-top:9px;}
+  .mini-card{flex:1; padding:9px; border-radius:19px; background:#fff; border:2px solid var(--line); box-shadow:0 4px 0 var(--shadow3d);}
+  .mini-card .row{display:flex; align-items:flex-start; justify-content:space-between;}
+  .mini-card .icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:17px;}
+  .mini-card b{display:block; margin-top:7px; font-size:10px; font-weight:900;}
+  .mini-card small{display:block; margin-top:2px; font-size:7.4px; font-weight:600; color:var(--ink-soft); line-height:1.3;}
+  .video{
+    display:flex; align-items:center; gap:10px; margin-top:10px; padding:10px; border-radius:19px;
+    background:#fff; border:2px solid var(--line); box-shadow:0 4px 0 var(--shadow3d);
+  }
+  .video .play{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#E50914,#FF5252);display:grid;place-items:center;color:#fff;font-size:16px;flex:none;box-shadow:0 4px 10px rgba(229,9,20,.3);}
+  .video .info{flex:1; min-width:0;}
+  .video b{font-size:10.4px; font-weight:900;}
+  .video small{display:block; margin-top:2px; font-size:7.5px; font-weight:600; color:var(--ink-soft); line-height:1.3;}
+  .video .count{font-size:7.2px; font-weight:900; color:#E50914; background:#FFE5E5; border-radius:8px; padding:4px 7px; flex:none;}
+  .footer-note{margin-top:auto; padding-top:16px; text-align:center; font-size:7.5px; font-weight:700; color:rgba(131,133,163,.95);}
+  .footer-note b{display:block; font-size:8.6px; font-weight:900; color:var(--navy); letter-spacing:.5px; margin-bottom:2px;}
+  .bottom-nav{
+    position:absolute; z-index:8; left:10px; right:10px; bottom:9px; height:56px;
+    background:#fff; border:2px solid var(--line); border-radius:27px;
+    box-shadow:0 8px 18px rgba(49,53,90,.16);
+    display:flex; align-items:center; padding:0 5px;
+  }
+  .nav-item{flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--ink-soft);}
+  .nav-item .ni{width:32px;height:29px;border-radius:10px;display:grid;place-items:center;font-size:13px;}
+  .nav-item small{font-size:6.6px; font-weight:800;}
+  .nav-item.active{color:var(--sky-deep);}
+  .nav-item.active .ni{background:linear-gradient(135deg,rgba(63,168,218,.18),rgba(63,168,218,.07)); border:1px solid rgba(63,168,218,.22);}
+  .nav-item.active small{font-weight:900;}
+  .nav-item.emergency{color:rgba(241,98,73,.9);}
+  .nav-item .dotind{width:10px;height:2.5px;border-radius:9px;background:transparent;}
+  .nav-item.active .dotind{background:var(--sky-deep);}
+
+  /* annotations */
+  .notes{display:flex; gap:14px; margin-top:30px;}
+  .note{
+    flex:1; background:rgba(255,255,255,.80); border:1.5px solid rgba(63,168,218,.14);
+    border-radius:20px; padding:14px 16px; box-shadow:0 10px 24px rgba(49,53,90,.06);
+  }
+  .note h6{margin:0 0 7px; font-size:11.5px; font-weight:900; letter-spacing:.2px; color:var(--navy); display:flex; align-items:center; gap:6px;}
+  .note ul{margin:0; padding-left:16px; color:#5A6C8A; font-size:10.5px; line-height:1.65; font-weight:600;}
+  .note li::marker{color:var(--coral-deep);}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="turtle" viewBox="0 0 100 100">
+    <ellipse cx="50" cy="65" rx="33" ry="28" fill="#2E7D32"/>
+    <ellipse cx="50" cy="64" rx="30" ry="25" fill="#43A047"/>
+    <ellipse cx="50" cy="67" rx="29" ry="22" fill="none" stroke="#81C784" stroke-width="3"/>
+    <g fill="#43A047" stroke="#1B5E20" stroke-width="1">
+      <polygon points="50,54 58,60 55,70 45,70 42,60"/>
+      <polygon points="39,49 47,52 45,61 36,60 34,53"/>
+      <polygon points="61,49 66,53 64,60 55,61 53,52"/>
+      <polygon points="37,66 45,66 44,75 38,76 34,71"/>
+      <polygon points="63,66 66,71 62,76 56,75 55,66"/>
+    </g>
+    <ellipse cx="30" cy="78" rx="8" ry="6" fill="#66BB6A"/>
+    <ellipse cx="70" cy="78" rx="8" ry="6" fill="#66BB6A"/>
+    <path d="M26 56 Q16 59 19 67 Q24 70 30 64Z" fill="#66BB6A" stroke="#388E3C" stroke-width="1.2"/>
+    <path d="M74 56 Q84 59 81 67 Q76 70 70 64Z" fill="#66BB6A" stroke="#388E3C" stroke-width="1.2"/>
+    <ellipse cx="50" cy="34" rx="19" ry="16" fill="#A5D6A7" stroke="#388E3C" stroke-width="1.2"/>
+    <circle cx="42" cy="35" r="4" fill="#fff" stroke="#1A2332" stroke-width=".9"/>
+    <circle cx="58" cy="35" r="4" fill="#fff" stroke="#1A2332" stroke-width=".9"/>
+    <circle cx="42.5" cy="35.5" r="2.4" fill="#1A2332"/>
+    <circle cx="58.5" cy="35.5" r="2.4" fill="#1A2332"/>
+    <circle cx="41.5" cy="34.4" r=".9" fill="#fff"/>
+    <circle cx="57.5" cy="34.4" r=".9" fill="#fff"/>
+    <ellipse cx="38" cy="41" rx="3" ry="1.7" fill="#FF8A80" opacity=".7"/>
+    <ellipse cx="62" cy="41" rx="3" ry="1.7" fill="#FF8A80" opacity=".7"/>
+    <path d="M46 43 Q50 47 54 43" fill="none" stroke="#1A2332" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M34 24 C33 14 67 14 66 24Z" fill="#FFCA28" stroke="#FFA000" stroke-width="1.2"/>
+    <path d="M30 25 Q50 22 70 25 Q70 28 67 28 Q50 25 33 28 Q30 28 30 25Z" fill="#FFA000"/>
+    <path d="M44 18 Q48 15 52 18 Q48 19 44 18Z" fill="#fff" opacity=".75"/>
+    <circle cx="50" cy="21" r="3.6" fill="#fff"/>
+    <path d="M50 18.5V23.5M47.5 21H52.5" stroke="#C4400E" stroke-width="1.4" stroke-linecap="square"/>
+  </symbol>
+</svg>
+
+<div class="page">
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span> SIGEMPA MALUT · UI CONCEPT</div>
+    <h1>Splash &amp; Home Screen <em>Gempa Bumi</em></h1>
+    <p>Desain baru dengan satu palet warna untuk kedua layar: langit Maluku, latar krem hangat, kuning siaga, dan aksen karang. Maskot kura-kura siaga tampil di splash maupun home.</p>
+    <div class="palette">
+      <span class="swatch"><i style="background:#6FC6EE"></i>Sky</span>
+      <span class="swatch"><i style="background:#3FA8DA"></i>Sky Deep</span>
+      <span class="swatch"><i style="background:#FFFBF1;border:1px solid #E9E2CE"></i>Cream</span>
+      <span class="swatch"><i style="background:#FFC94D"></i>Sunny</span>
+      <span class="swatch"><i style="background:#F16249"></i>Coral</span>
+      <span class="swatch"><i style="background:#6FDBA8"></i>Mint</span>
+      <span class="swatch"><i style="background:#31355A"></i>Navy</span>
+    </div>
+  </header>
+
+  <div class="devices">
+    <!-- ============ SPLASH ============ -->
+    <div class="device-wrap">
+      <div class="device">
+        <div class="screen splash-screen">
+          <div class="statusbar dark"><span>9:41</span><span class="icons">▮▮▮ &nbsp;◔ &nbsp;▰</span></div>
+          <div class="splash-sun"></div>
+          <div class="cloud a"></div>
+          <div class="cloud b"></div>
+          <div class="cloud c"></div>
+
+          <div class="splash-land">
+            <svg viewBox="0 0 344 190" preserveAspectRatio="none" style="width:100%;height:100%;display:block">
+              <path d="M0 92 Q52 38 118 74 Q176 104 230 70 Q282 38 344 82 L344 190 L0 190Z" fill="#6FDBA8" opacity=".32"/>
+              <path d="M178 88 L226 36 Q232 30 238 36 L296 88Z" fill="#3DBE85" opacity=".28"/>
+              <ellipse cx="232" cy="34" rx="9" ry="3" fill="#F16249" opacity=".4"/>
+              <path d="M0 104 Q60 70 130 96 Q214 128 290 94 Q320 82 344 96 L344 190 L0 190Z" fill="#3DBE85" opacity=".20"/>
+              <path d="M0 112 Q70 92 138 106 Q218 124 286 104 Q320 96 344 110 L344 190 L0 190Z" fill="#FFFBF1"/>
+              <path d="M0 122 Q86 108 172 122 Q260 136 344 118" fill="none" stroke="#3FA8DA" stroke-opacity=".12" stroke-width="2"/>
+              <path d="M0 142 Q86 128 172 142 Q260 156 344 138" fill="none" stroke="#3FA8DA" stroke-opacity=".09" stroke-width="2"/>
+            </svg>
+          </div>
+
+          <div class="splash-content">
+            <div class="brand">
+              <span class="mini"><svg><use href="#turtle"></use></svg></span>
+              <b>SIGEMPA MALUT</b><span class="dot"></span>
+            </div>
+            <div class="splash-title">
+              <h2>EDUKASI BENCANA</h2>
+              <h3>GEMPA BUMI</h3>
+              <div class="game-chip">BERBASIS GAME INTERAKTIF</div>
+              <div class="splash-sub">Bagi Siswa di Wilayah Rawan Gempa Maluku Utara</div>
+            </div>
+
+            <div class="scene-card">
+              <svg class="scene" viewBox="0 0 400 280" preserveAspectRatio="xMidYMax slice">
+                <defs>
+                  <linearGradient id="cardSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#9ADCF7"/>
+                    <stop offset="1" stop-color="#EAF9FF"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="280" fill="url(#cardSky)"/>
+                <circle cx="338" cy="46" r="30" fill="#FFC94D" opacity=".16"/>
+                <circle cx="338" cy="46" r="21" fill="#FFC94D" opacity=".28"/>
+                <circle cx="338" cy="46" r="14" fill="#FFC94D"/>
+                <g fill="#fff" opacity=".92">
+                  <circle cx="70" cy="34" r="7"/><circle cx="63" cy="37" r="5"/><circle cx="77" cy="37" r="5.5"/>
+                  <rect x="50" y="36" width="40" height="7" rx="3.5"/>
+                  <circle cx="222" cy="22" r="8"/><circle cx="214" cy="25" r="5.5"/><circle cx="230" cy="25" r="6"/>
+                  <rect x="200" y="24" width="46" height="8" rx="4"/>
+                  <circle cx="152" cy="62" r="4.5"/><circle cx="147" cy="64" r="3.2"/><circle cx="157" cy="64" r="3.4"/>
+                  <rect x="140" y="63" width="25" height="5" rx="2.5"/>
+                </g>
+                <path d="M262 58 Q268 53 274 58 M276 51 Q280 47 284 51" fill="none" stroke="#31355A" stroke-opacity=".4" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M196 162 L282 78 Q289 71 296 78 L392 162Z" fill="#8FD3BC"/>
+                <path d="M282 78 Q289 71 296 78 L306 92 Q289 86 274 92Z" fill="#6FBFA6"/>
+                <circle cx="289" cy="62" r="6" fill="#fff" opacity=".45"/>
+                <circle cx="296" cy="50" r="8" fill="#fff" opacity=".3"/>
+                <circle cx="287" cy="38" r="10" fill="#fff" opacity=".18"/>
+                <path d="M-20 162 Q40 116 106 148 Q160 170 220 150 Q300 126 420 160 L420 180 L-20 180Z" fill="#A7DEBF"/>
+                <path d="M-20 166 Q60 138 140 162 Q250 186 420 156 L420 184 L-20 184Z" fill="#7FCFA9"/>
+
+                <!-- school -->
+                <rect x="42" y="94" width="98" height="68" rx="4" fill="#FFF9C4"/>
+                <rect x="42" y="152" width="98" height="10" fill="#FFB74D"/>
+                <rect x="260" y="94" width="98" height="68" rx="4" fill="#FFF9C4"/>
+                <rect x="260" y="152" width="98" height="10" fill="#FFB74D"/>
+                <rect x="134" y="76" width="132" height="86" rx="5" fill="#FFFDE7"/>
+                <rect x="134" y="150" width="132" height="12" fill="#FFA726"/>
+                <g fill="#81D4FA" stroke="#fff" stroke-width="1.2">
+                  <rect x="52" y="106" width="22" height="24" rx="3"/><rect x="82" y="106" width="22" height="24" rx="3"/><rect x="112" y="106" width="20" height="24" rx="3"/>
+                  <rect x="268" y="106" width="20" height="24" rx="3"/><rect x="298" y="106" width="22" height="24" rx="3"/><rect x="328" y="106" width="22" height="24" rx="3"/>
+                </g>
+                <g stroke="#fff" stroke-width="1">
+                  <path d="M63 106v24M52 118h22M93 106v24M82 118h22M122 106v24M112 118h20"/>
+                  <path d="M278 106v24M268 118h20M309 106v24M298 118h22M339 106v24M328 118h22"/>
+                </g>
+                <rect x="180" y="116" width="40" height="46" rx="4" fill="#6D4C41"/>
+                <rect x="199" y="116" width="2" height="46" fill="#4E342E"/>
+                <rect x="184" y="122" width="12" height="16" fill="#81D4FA"/>
+                <rect x="204" y="122" width="12" height="16" fill="#81D4FA"/>
+                <rect x="164" y="106" width="8" height="56" fill="#fff"/>
+                <rect x="228" y="106" width="8" height="56" fill="#fff"/>
+                <path d="M34 96 L88 64 L142 96Z" fill="#D84315" stroke="#BF360C" stroke-width="2"/>
+                <path d="M258 96 L312 64 L366 96Z" fill="#D84315" stroke="#BF360C" stroke-width="2"/>
+                <path d="M124 78 L200 36 L276 78Z" fill="#E64A19" stroke="#BF360C" stroke-width="2"/>
+                <rect x="162" y="54" width="76" height="18" rx="3" fill="#fff" stroke="#C4400E" stroke-width="1.2"/>
+                <circle cx="200" cy="63" r="6" fill="#FFF9C4" stroke="#C4400E"/>
+                <path d="M200 63v-4M200 63h3" stroke="#1B2433" stroke-width="1"/>
+                <g>
+                  <rect x="20.5" y="144" width="7" height="24" fill="#5D4037"/>
+                  <circle cx="24" cy="138" r="22" fill="#2E7D32"/>
+                  <circle cx="14" cy="134" r="15" fill="#388E3C"/>
+                  <circle cx="34" cy="134" r="16" fill="#43A047"/>
+                  <rect x="372.5" y="144" width="7" height="24" fill="#5D4037"/>
+                  <circle cx="376" cy="138" r="22" fill="#2E7D32"/>
+                  <circle cx="366" cy="134" r="15" fill="#388E3C"/>
+                  <circle cx="386" cy="134" r="16" fill="#43A047"/>
+                </g>
+
+                <!-- field -->
+                <rect x="-60" y="162" width="520" height="118" fill="#4CAF50"/>
+                <rect x="-60" y="162" width="520" height="18" fill="#43A047"/>
+                <path d="M-40 190 Q200 178 440 190" fill="none" stroke="#fff" stroke-opacity=".62" stroke-width="3"/>
+                <path d="M-40 230 Q200 216 440 230" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.5"/>
+                <ellipse cx="200" cy="206" rx="35" ry="13" fill="none" stroke="#fff" stroke-opacity=".46" stroke-width="2"/>
+
+                <!-- flag -->
+                <rect x="142" y="196" width="12" height="6" rx="2" fill="#B0BEC5"/>
+                <path d="M148 196V82" stroke="#ECEFF1" stroke-width="3"/>
+                <circle cx="148" cy="82" r="3.5" fill="#FFD54F"/>
+                <path d="M148 86 Q162 84 176 88 V97 Q162 93 148 95Z" fill="#D32F2F"/>
+                <path d="M148 95 Q162 93 176 97 V106 Q162 102 148 104Z" fill="#fff" stroke="#CFD8DC" stroke-width=".8"/>
+
+                <!-- assembly sign -->
+                <path d="M312 206V168" stroke="#78909C" stroke-width="3.5"/>
+                <rect x="290" y="148" width="44" height="24" rx="4" fill="#1B5E20" stroke="#fff" stroke-width="1.5"/>
+                <circle cx="312" cy="158" r="2.5" fill="#fff"/>
+                <g stroke="#fff" stroke-width="1.4" stroke-linecap="round">
+                  <path d="M306 154l3 3M318 154l-3 3M306 162l3-3M318 162l-3-3"/>
+                </g>
+                <text x="312" y="168" text-anchor="middle" fill="#fff" font-size="4.8" font-weight="900" font-family="Segoe UI">TITIK KUMPUL</text>
+
+                <!-- kids -->
+                <g>
+                  <g transform="translate(58 198) rotate(-6)">
+                    <rect x="-4" y="-1" width="8" height="8" rx="3" fill="#FF8B7A"/>
+                    <path d="M-3 7l-1 4M3 7l1 3" stroke="#5D4037" stroke-width="1.6"/>
+                    <path d="M-4 1l-3 3M4 1l3 2" stroke="#A5D6A7" stroke-width="1.4"/>
+                    <circle cx="0" cy="-4" r="3.4" fill="#FFCC9E" stroke="#8D6E63" stroke-width=".6"/>
+                    <path d="M-3.5-5a3.5 3.5 0 0 1 7 0Z" fill="#4E342E"/>
+                  </g>
+                  <g transform="translate(84 206) rotate(3)">
+                    <rect x="-4" y="-1" width="8" height="8" rx="3" fill="#5B7FE0"/>
+                    <path d="M-3 7l-1 4M3 7l1 3" stroke="#5D4037" stroke-width="1.6"/>
+                    <path d="M-4 1l-3 3M4 1l3 2" stroke="#A5D6A7" stroke-width="1.4"/>
+                    <circle cx="0" cy="-4" r="3.4" fill="#FFCC9E" stroke="#8D6E63" stroke-width=".6"/>
+                    <path d="M-3.5-5a3.5 3.5 0 0 1 7 0Z" fill="#4E342E"/>
+                  </g>
+                  <g transform="translate(328 210) rotate(7)">
+                    <rect x="-4" y="-1" width="8" height="8" rx="3" fill="#FFC94D"/>
+                    <path d="M-3 7l-1 4M3 7l1 3" stroke="#5D4037" stroke-width="1.6"/>
+                    <path d="M-4 1l-3 3M4 1l3 2" stroke="#A5D6A7" stroke-width="1.4"/>
+                    <circle cx="0" cy="-4" r="3.4" fill="#FFCC9E" stroke="#8D6E63" stroke-width=".6"/>
+                    <path d="M-3.5-5a3.5 3.5 0 0 1 7 0Z" fill="#4E342E"/>
+                  </g>
+                </g>
+                <g fill="#2E7D32">
+                  <circle cx="22" cy="252" r="16"/><circle cx="10" cy="255" r="10"/><circle cx="34" cy="255" r="11"/>
+                  <circle cx="382" cy="244" r="18"/><circle cx="369" cy="247" r="11"/><circle cx="395" cy="247" r="12"/>
+                </g>
+                <g fill="#FFF176">
+                  <circle cx="44" cy="284" r="3"/><circle cx="372" cy="278" r="3"/><circle cx="118" cy="294" r="3"/>
+                </g>
+              </svg>
+
+              <div class="bubble">🐢 Ketuk layar untuk simulasi gempa!</div>
+              <div class="mascot"><svg><use href="#turtle"></use></svg></div>
+              <div class="safe-chip"><i></i> DROP • COVER • HOLD ON</div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat"><span>🐢</span> Kura Siaga</div>
+              <div class="stat"><span>🎮</span> Game Seru</div>
+              <div class="stat"><span>⭐</span> Lencana</div>
+            </div>
+
+            <div class="start-btn"><span class="play">▶</span> MULAI GAME <span>→</span></div>
+            <div class="hint">Ketuk maskot untuk simulasi gempa • Siap belajar siaga gempa?</div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><b>1. Splash Screen</b><span>Latar langit-pulau Maluku + kartu sekolah interaktif</span></div>
+    </div>
+
+    <!-- ============ HOME TOP ============ -->
+    <div class="device-wrap">
+      <div class="device">
+        <div class="screen home-screen">
+          <div class="statusbar light"><span>9:41</span><span class="icons">▮▮▮ &nbsp;◔ &nbsp;▰</span></div>
+          <div class="home-scroll">
+            <div class="home-header">
+              <div class="hsun"></div>
+              <div class="hcloud a"></div>
+              <div class="hcloud b"></div>
+              <svg class="hwave" viewBox="0 0 344 46" preserveAspectRatio="none">
+                <path d="M0 26 Q62 10 130 26 Q198 42 266 18 Q306 4 344 26 L344 46 L0 46Z" fill="#fff" opacity=".09"/>
+                <path d="M0 34 Q70 20 140 32 Q214 44 280 30 Q316 22 344 34 L344 46 L0 46Z" fill="#fff" opacity=".06"/>
+              </svg>
+
+              <div class="profile">
+                <div class="avatar">
+                  <svg><use href="#turtle"></use></svg>
+                  <span class="star">⭐</span>
+                </div>
+                <div class="greet">
+                  <small>Halo, Selamat Datang di</small>
+                  <b>Aplikasi Edukasi Gempa Bumi 🎉</b>
+                  <em>Yuk belajar sambil main, biar makin siaga</em>
+                </div>
+                <div class="lvl"><span>LEVEL</span><b>1</b></div>
+              </div>
+
+              <div class="xp">
+                <div class="xp-top">
+                  <span class="rank">✦ Siaga Pemula</span>
+                  <small>0 / 150 XP</small>
+                </div>
+                <div class="bar"><i></i></div>
+              </div>
+
+              <div class="prog-row"><b>🎯 Progress Hari Ini</b><span class="prog-pill">0/4 Misi</span></div>
+              <div class="segments"><i></i><i></i><i></i><i></i></div>
+            </div>
+
+            <div class="home-body">
+              <div class="section"><h4>🌦️ Siaga Hari Ini</h4><span style="font-size:8px;font-weight:900;color:#8385A3">3 TARGET</span></div>
+              <div class="tips">
+                <div class="tip"><div class="ic" style="background:rgba(63,168,218,.14)">🧭</div><small>TITIK KUMPUL</small><b>Lapangan Sekolah</b></div>
+                <div class="tip"><div class="ic" style="background:rgba(61,190,133,.14)">🎒</div><small>TAS SIAGA</small><b>Sudah Siap</b></div>
+                <div class="tip"><div class="ic" style="background:rgba(242,167,11,.14)">📻</div><small>INFO BMKG</small><b>Aman Terkini</b></div>
+              </div>
+
+              <div class="quest">
+                <span class="sunny-emoji">🌤️</span>
+                <h5>🗺️ Petualangan Hari Ini</h5>
+                <p>📚 Baca modul edukasi untuk memulai petualangan!</p>
+                <div class="steps">
+                  <div class="step current"><div class="circle">📖</div><small>Baca<br>Modul</small></div>
+                  <div class="step"><div class="circle">🔒</div><small>Nonton<br>Video</small></div>
+                  <div class="step"><div class="circle">🔒</div><small>Kuis</small></div>
+                  <div class="step"><div class="circle">🔒</div><small>Main<br>Game</small></div>
+                  <div class="step"><div class="circle">🔒</div><small>Klaim<br>Lencana</small></div>
+                </div>
+                <div class="cta">📚 Baca Modul Edukasi</div>
+              </div>
+
+              <div class="fact">
+                <div class="brain">🧠</div>
+                <div class="txt">
+                  <div class="head"><b>Tahukah Kamu?</b><small>1/7</small></div>
+                  <p>Gempa bumi belum bisa diprediksi. Menyiapkan tas siaga dan rencana evakuasi adalah cara terbaik untuk tetap aman.</p>
+                  <div class="tags"><span class="tag green">BMKG</span><span class="tag blue">Mitigasi</span></div>
+                </div>
+                <div class="mascot-sm"><svg><use href="#turtle"></use></svg></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item active"><span class="ni">🏠</span><small>Beranda</small><i class="dotind"></i></div>
+            <div class="nav-item"><span class="ni">🎮</span><small>Main</small><i class="dotind"></i></div>
+            <div class="nav-item emergency"><span class="ni">⚠️</span><small>Darurat</small><i class="dotind"></i></div>
+            <div class="nav-item"><span class="ni">📖</span><small>Belajar</small><i class="dotind"></i></div>
+            <div class="nav-item"><span class="ni">🏅</span><small>Lencana</small><i class="dotind"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><b>2. Home Screen</b><span>Header XP &amp; level, tips siaga, quest, dan fakta harian</span></div>
+    </div>
+
+    <!-- ============ HOME LOWER ============ -->
+    <div class="device-wrap">
+      <div class="device">
+        <div class="screen home-screen">
+          <div class="statusbar dark"><span>9:41</span><span class="icons">▮▮▮ &nbsp;◔ &nbsp;▰</span></div>
+          <div class="lower">
+            <div class="fact" style="margin-top:0">
+              <div class="brain">🧠</div>
+              <div class="txt">
+                <div class="head"><b>Tahukah Kamu?</b><small>2/7</small></div>
+                <p>Saat gempa, jangan gunakan lift. Setelah guncangan berhenti, keluarlah lewat tangga darurat dengan tenang.</p>
+                <div class="tags"><span class="tag green">BMKG</span><span class="tag blue">Mitigasi</span></div>
+              </div>
+              <div class="mascot-sm"><svg><use href="#turtle"></use></svg></div>
+            </div>
+
+            <div class="section" style="margin-top:14px"><h4>🎮 Misi Latihan Cepat</h4><a>Lihat Semua</a></div>
+            <div class="featured">
+              <div class="icon" style="background:#FFE9E9">🏫</div>
+              <div class="info">
+                <div class="top"><b>Simulasi Gempa 7.2 SR</b><span class="badge" style="color:#F16249;background:#FFE9E9">UTAMA</span></div>
+                <small>Latihan evakuasi mandiri keluar gedung menuju lapangan terbuka.</small>
+              </div>
+              <span class="arrow">›</span>
+            </div>
+            <div class="grid2">
+              <div class="mini-card">
+                <div class="row">
+                  <div class="icon" style="background:#FFF3D0">🛡️</div>
+                  <span class="badge" style="color:#8A6300;background:#FFF3D0">REFLEKS</span>
+                </div>
+                <b>Drop &amp; Cover</b><small>Refleks cepat gaya kura-kura.</small>
+              </div>
+              <div class="mini-card">
+                <div class="row">
+                  <div class="icon" style="background:#EFE7FF">📚</div>
+                  <span class="badge" style="color:#7048C4;background:#EFE7FF">EDUKASI</span>
+                </div>
+                <b>Modul Malut</b><small>Pahami lempeng &amp; tsunami.</small>
+              </div>
+            </div>
+
+            <div class="section" style="margin-top:14px"><h4>🎬 Video Edukasi Online</h4><a>Buka Galeri</a></div>
+            <div class="video">
+              <div class="play">▶</div>
+              <div class="info"><b>Tonton Video Edukasi</b><small>Animasi sains gempa &amp; panduan Drop-Cover-Hold On.</small></div>
+              <span class="count">4 Video</span>
+            </div>
+
+            <div class="footer-note"><b>🐢 SIGEMPA Malut</b>Belajar siaga gempa, selamatkan diri &amp; sesama 💙</div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item active"><span class="ni">🏠</span><small>Beranda</small><i class="dotind"></i></div>
+            <div class="nav-item"><span class="ni">🎮</span><small>Main</small><i class="dotind"></i></div>
+            <div class="nav-item emergency"><span class="ni">⚠️</span><small>Darurat</small><i class="dotind"></i></div>
+            <div class="nav-item"><span class="ni">📖</span><small>Belajar</small><i class="dotind"></i></div>
+            <div class="nav-item"><span class="ni">🏅</span><small>Lencana</small><i class="dotind"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="caption"><b>3. Home — lanjutan scroll</b><span>Misi cepat, video edukasi, dan navigasi bawah</span></div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <h6>🎨 Konsistensi Warna</h6>
+      <ul>
+        <li>Palet bersama <b>AppPalette</b>: sky, sunny, coral, mint, cream, navy.</li>
+        <li>Splash dan home memakai gradien langit serta latar krem yang sama.</li>
+        <li>Aksen karang dipakai untuk CTA dan keadaan darurat di kedua layar.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h6>🌋 Splash Lebih Hidup</h6>
+      <ul>
+        <li>Latar penuh: matahari, awan mengapung, pulau &amp; gunung Maluku, gelombang, jejak kura-kura.</li>
+        <li>Simulasi gempa: retakan, gelombang seismik, debu, dan maskot siaga.</li>
+        <li>Tombol MULAI GAME 3D dengan kilau bergerak.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h6>🏠 Home Lebih Lengkap</h6>
+      <ul>
+        <li>Bar XP, level, dan peringkat baru di header.</li>
+        <li>Kartu fakta siaga harian yang bisa diganti.</li>
+        <li>Navbar aktif beranimasi, kartu misi, dan footer maskot.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

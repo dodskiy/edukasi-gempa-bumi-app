@@ -1,0 +1,22 @@
+name: edukasi_gempa_malut
+description: "Aplikasi Edukasi Bencana Gempa Bumi Berbasis Game Interaktif Bagi Siswa di Wilayah Rawan Gempa Maluku Utara (SIGEMPA Malut)"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
